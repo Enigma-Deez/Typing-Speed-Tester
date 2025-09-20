@@ -25,6 +25,12 @@
       margin-top: 15px;
       font-weight: bold;
     }
+    button {
+      margin: 5px;
+      padding: 8px 15px;
+      font-size: 15px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -37,8 +43,10 @@
     <li>The timer starts when you begin typing.</li>
     <li>When you finish typing correctly, your <b>WPM</b>, <b>Accuracy</b>, and <b>Time</b> will be shown.</li>
   </ol>
+  <p style="color: red; font-weight: bold;">⚠️ Note: You must type the text exactly as shown for the test to process.</p>
 
   <button onclick="startTest()">Start Test</button>
+  <button onclick="restartTest()">Restart Test</button>
 
   <div id="text">Your text will appear here...</div>
   <textarea id="input" rows="4" disabled placeholder="Start test to begin typing..."></textarea>
@@ -50,7 +58,12 @@
       "The quick brown fox jumps over the lazy dog",
       "Typing speed tests measure how fast you can type",
       "Practice makes perfect keep improving daily",
-      "Javascript is fun once you understand the basics"
+      "Javascript is fun once you understand the basics",
+      "Discipline and consistency will always beat motivation",
+      "Achievers University is building the future today",
+      "Great developers start with small projects and grow big",
+      "Accuracy is more important than speed when learning typing",
+      "Success is the sum of small efforts repeated daily"
     ];
 
     let startTime, endTime;
@@ -67,6 +80,14 @@
       inputEl.value = "";
       inputEl.disabled = false;
       inputEl.focus();
+      resultEl.textContent = "";
+      isStarted = false;
+    }
+
+    function restartTest() {
+      textEl.textContent = "Your text will appear here...";
+      inputEl.value = "";
+      inputEl.disabled = true;
       resultEl.textContent = "";
       isStarted = false;
     }
